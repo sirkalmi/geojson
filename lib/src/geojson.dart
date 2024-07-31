@@ -438,9 +438,9 @@ class GeoJson {
   }
 
   static void _processFeatures(
-      {required _DataToProcess dataToProcess,
-      IsoRunner? iso,
-      StreamSink<GeoJsonFeature<dynamic>?>? sink}) {
+      {required final _DataToProcess dataToProcess,
+      final IsoRunner? iso,
+      final StreamSink<GeoJsonFeature<dynamic>?>? sink}) {
     if (iso == null) {
       if (sink == null) {
         throw ArgumentError.notNull();

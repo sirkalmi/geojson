@@ -1,10 +1,10 @@
-import 'package:geopoint/geopoint.dart';
+import 'package:geopoint3/geopoint3.dart';
 
 import 'models.dart';
 
 /// Get a collection inside another collection
 GeoJsonGeometryCollection getGeometryCollection(
-    {List<GeoJsonFeature<dynamic>?>? geometries,
+    {final List<GeoJsonFeature<dynamic>?>? geometries,
     GeoJsonFeature<dynamic>? feature,
     String? nameProperty}) {
   final name = _getName(feature: feature, nameProperty: nameProperty);
@@ -97,9 +97,9 @@ GeoJsonPolygon getPolygon(
 
 /// Get a multiPolygon from coordinates and feature
 GeoJsonMultiPolygon getMultiPolygon(
-    {required List<dynamic> coordinates,
-    GeoJsonFeature<dynamic>? feature,
-    String? nameProperty}) {
+    {required final List<dynamic> coordinates,
+    final GeoJsonFeature<dynamic>? feature,
+    final String? nameProperty}) {
   final multiPolygon = GeoJsonMultiPolygon();
   var i = 1;
   multiPolygon.name = _getName(feature: feature, nameProperty: nameProperty);
@@ -122,7 +122,7 @@ GeoJsonMultiPolygon getMultiPolygon(
 }
 
 String _getName(
-    {GeoJsonFeature<dynamic>? feature, String? nameProperty, int? index}) {
+    {final GeoJsonFeature<dynamic>? feature, final String? nameProperty, final int? index}) {
   String? name;
   if (nameProperty != null) {
     name = feature?.properties?[nameProperty]?.toString();

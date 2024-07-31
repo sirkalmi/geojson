@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:geopoint/geopoint.dart';
+import 'package:geopoint3/geopoint3.dart';
 
 /// Geojson feature types
 enum GeoJsonFeatureType {
@@ -115,16 +115,16 @@ class GeoJsonFeature<T> {
         break;
       case GeoJsonFeatureType.multipoint:
         total =
-            (geometry as GeoJsonMultiPoint?)?.geoSerie?.geoPoints.length ?? 0;
+            (geometry as GeoJsonMultiPoint?)?.geoSerie?.geoPoints?.length ?? 0;
         break;
       case GeoJsonFeatureType.line:
-        total = (geometry as GeoJsonLine?)?.geoSerie?.geoPoints.length ?? 0;
+        total = (geometry as GeoJsonLine?)?.geoSerie?.geoPoints?.length ?? 0;
         break;
       case GeoJsonFeatureType.multiline:
         final g = geometry as GeoJsonMultiLine?;
         if (g != null) {
           for (final line in g.lines) {
-            total = total + (line.geoSerie?.geoPoints.length ?? 0);
+            total = total + (line.geoSerie?.geoPoints?.length ?? 0);
           }
         }
         break;
@@ -132,7 +132,7 @@ class GeoJsonFeature<T> {
         final g = geometry as GeoJsonPolygon?;
         if (g != null) {
           for (final geoSerie in g.geoSeries) {
-            total = total + geoSerie.geoPoints.length;
+            total = total + geoSerie.geoPoints!.length;
           }
         }
         break;
@@ -141,7 +141,7 @@ class GeoJsonFeature<T> {
         if (g != null) {
           for (final polygon in g.polygons) {
             for (final geoSerie in polygon.geoSeries) {
-              total = total + geoSerie.geoPoints.length;
+              total = total + geoSerie.geoPoints!.length;
             }
           }
         }
